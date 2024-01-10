@@ -5,19 +5,39 @@ export class Table extends HTMLElement {
   }
 
   connectedCallback() {
+    const headers = this.dataset.headers.split(',').map((h) => h.trim());
     this.shadowRoot.innerHTML = `
     
       <link rel="stylesheet" href="./components/table.css" /> 
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Country</th>
+                    ${headers.map((header) => `<th>${header}</th>`).join('')}
                 </tr>
             </thead>
-        
+            <tbody></tbody>
         </table>
       `;
+  }
+  /**
+   * @param data {string[][]}
+   */
+  set data(data) {
+    const tableBody = this.shadowRoot.querySelector('tbody');
+    const rows = data.map((rowData) => {
+      const row = document.createElement('tr');
+      const cells = rowData.map((cellData) => {
+        const cell = document.createElement('td');
+
+        cell.textContent = cellData;
+
+        return cell;
+      });
+      row.append(...cells);
+
+      return row;
+    });
+    tableBody.innerHTML = '';
+    tableBody.append(...rows);
   }
 }
