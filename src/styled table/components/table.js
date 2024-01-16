@@ -6,12 +6,15 @@ export class Table extends HTMLElement {
 
   connectedCallback() {
     const headers = this.dataset.headers.split(',').map((h) => h.trim());
-    this.shadowRoot.innerHTML = `
-    
-      <link rel="stylesheet" href="./components/table.css" /> 
+    this.shadowRoot.innerHTML = /*html*/ `
+      <style> 
+        /** we can write css there using style tag, pros is htere will not be network request for css thst is so useful, or by link */
+        /** for using link we will have extra network request */
+      </style>
+      <link rel="stylesheet" href="./components/table.css" />
         <table>
             <thead>
-                <tr>
+                <tr part="table-header">
                     ${headers.map((header) => `<th>${header}</th>`).join('')}
                 </tr>
             </thead>

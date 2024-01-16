@@ -7,7 +7,7 @@ table {
 }
 
 table tr {
-    background-color: #009578;
+    background-color: var(--primary-color);
     color: #fff;
     text-align: center;
 
