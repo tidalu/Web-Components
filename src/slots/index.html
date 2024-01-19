@@ -3,7 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>profile card</title>
+    <script type="module" src="main.js"></script>
   </head>
-  <body></body>
+  <body>
+    <profile-card
+      data-img="https://images.pexels.com/photos/133472/pexels-photo-133472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    >
+      <span slot="username"> Alif</span>
+      <p>Web Developer from Australia.</p>
+      <p>Also has a you tube channel</p>
+
+      <div slot="descript">
+        <p>hello baba</p>
+      </div>
+    </profile-card>
+  </body>
 </html>
